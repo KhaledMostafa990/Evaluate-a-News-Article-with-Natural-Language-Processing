@@ -1,6 +1,11 @@
+meaningCloudData = {}
+
+const dotenv = require('dotenv');
+dotenv.config();
 var path = require('path')
+const axios = require('axios')
 const express = require('express')
-const mockAPIResponse = require('./mockAPI.js')
+// const mockAPIResponse = require('./mockAPI.js')
 
 // console.log(__dirname)
 // app.get('/', function (req, res) {
@@ -17,9 +22,28 @@ const API_URL = 'https://api.meaningcloud.com/sentiment-2.1?'
 
 
 app.get('/test', function (req, res) {
-    res.send(mockAPIResponse)
+    res.send(meaningCloudData)
+
 })
 
+app.post('/api',  (req, res)=> {
+        let userUrl = req.body.validUrlInput;
+        let callMeaningCloud = `${API_URL}key=${API_KEY}&url=${userUrl}&lang=en`;
+        
+        // Get Data from API
+        axios.get(callMeaningCloud)
+        .then((res)=> {
+            const data = res.data
+            // console.log(data);
+            return data
+        })
+        .then((data)=> {
+            // console.log(data.model);
+            meaningCloudData['data'] = data;
+            // Send res to post method
+            res.send(meaningCloudData)
+        })
+})
 
 // designates what port the app will listen to for incoming requests
 app.listen(8000, function () {
