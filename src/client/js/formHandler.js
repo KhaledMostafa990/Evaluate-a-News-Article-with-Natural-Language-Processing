@@ -1,4 +1,5 @@
 import { urlChecker } from './urlChecker'
+import { postValidUrl } from './postValidUrl'
 
 const updateUI = (res)=> {
     document.getElementById('agreement').textContent = `Agreement : ${res.data.agreement}`
@@ -23,35 +24,12 @@ function handleSubmit(event) {
                 console.log(res.data.agreement)
                 updateUI(res)
             })
-        // fetch('http://localhost:8000/test')
-        // .then(res => res.json())
-        // .then((res)=> {
-        //     console.log(res)
-        // })
+
     }else {
         alert('Invalid url, please try agein!')
     }
     
 }
-const postValidUrl = async (data = {}) => {
-  // path to post data
-  const response = await fetch('/api', {
-    method: 'POST',
-    credentials: 'same-origin',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(data)
-  })
 
-  try {
-    const serRes = await response.json();
-
-    // console.log(serRes)
-
-    return serRes; // Get data from the server
-  } catch (error) {
-    // catch error
-    console.log('Something Went Wront', error);
-  }
-};
 
 export { handleSubmit }
