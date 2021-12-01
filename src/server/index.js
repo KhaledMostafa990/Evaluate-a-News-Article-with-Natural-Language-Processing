@@ -2,9 +2,10 @@ meaningCloudData = {}
 
 const dotenv = require('dotenv');
 dotenv.config();
-var path = require('path')
-const axios = require('axios')
+
 const express = require('express')
+const axios = require('axios')
+
 
 const app = express()
 app.use(express.json());

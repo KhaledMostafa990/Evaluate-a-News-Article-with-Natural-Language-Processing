@@ -1,6 +1,6 @@
 const postValidUrl = async (data = {}) => {
   // path to post data
-  const response = await fetch('/api', {
+  const response = await fetch('http://localhost:8000/api', {
     method: 'POST',
     credentials: 'same-origin',
     headers: { 'Content-Type': 'application/json' },

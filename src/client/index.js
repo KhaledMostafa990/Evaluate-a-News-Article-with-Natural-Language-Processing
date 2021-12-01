@@ -7,7 +7,6 @@ import './styles/form.scss'
 import './styles/header.scss'
 import './styles/footer.scss'
 
-// alert("TEXT!");
 
 export {
     urlChecker,
