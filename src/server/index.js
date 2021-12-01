@@ -5,13 +5,6 @@ dotenv.config();
 var path = require('path')
 const axios = require('axios')
 const express = require('express')
-// const mockAPIResponse = require('./mockAPI.js')
-
-// console.log(__dirname)
-// app.get('/', function (req, res) {
-//     // res.sendFile('dist/index.html')
-//     res.sendFile(path.resolve('src/client/views/index.html'))
-// })
 
 const app = express()
 app.use(express.json());
